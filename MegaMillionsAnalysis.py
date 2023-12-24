@@ -30,7 +30,11 @@ for line in raw_data:
     for delimiter in ['; ', ': ']:
         line = line.replace(delimiter, ',')
     line = line.split(',')
-    del line[6]  # Remove the "Mega Ball" label in the line.
+
+    # Remove the "Mega Ball" label in the line.
+    if 'Mega Ball' in line:
+        del line[line.index('Mega Ball')]
+        
     data.append(line)
 
 # Store data in a dataframe
